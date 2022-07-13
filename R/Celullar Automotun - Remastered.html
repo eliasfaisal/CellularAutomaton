@@ -1,4 +1,37 @@
-/*
+<!--
+    Conway's Game of Life
+    =====================
+
+    Created : 31 May 2022 | 15:24
+    Author  : Elias Faisal
+              github.com/eliasfaisal
+
+    License : MIT Licence
+-->
+<html>
+<head>
+    <title>Celullar Automotun</title>
+    <meta charset="utf-8">
+    <meta property="og:title" content="Conway's Game of Life Simulation with JS">
+    <meta property="og:description" content="By Elias Faisal">
+    <style type="text/css">
+        *{
+            user-select: none;
+            font-family: arial;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="500" height="500" style="border: 1px solid #000;"></canvas>
+    <br/>
+    <button id="runbtn">Run</button> <button id="randbtn">Randomize</button> <button id="drbtn">Draw</button> <button id="clrbtn">Clear</button> <button id="stepbtn">Step ></button> 
+    <input value="false" type="checkbox" id="iRenderGrids"/><label for="iRenderGrids">Grid Lines (low FPS)</label><br/>
+    <label for="amount">Random cells amount: </label><input value="1000" type="number" id="rndCellsAmount"/> <br/>
+    <label for="amount">View Port Size: </label><input value="100" type="number" id="iVPS"/> <br/>
+    <label for="amount">FPS: </label><input value="30" type="number" id="iFPS"/> <br/>
+    <label for="amount">Cell Size: </label><input value="5" type="number" id="iCellSize"/> <br/>
+    <script>
+            /*
     Conway's Game of Life Simulation With JavaScript
     ================================================
 
@@ -7,37 +40,37 @@
               github.com/eliasfaisal
 
     License : MIT Licence
-*/
+    */
 
-const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext('2d');
+    const canvas = document.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
 
-var grid_data = generateGridCells(100, 1000);
-var FPS = 30;
-var viewPortSize = 100;
-var cellSize = 5;
+    var grid_data = generateGridCells(100, 1000);
+    var FPS = 30;
+    var viewPortSize = 100;
+    var cellSize = 5;
 
-var gridLines = false;
-var running = false;
+    var gridLines = false;
+    var running = false;
 
-onload = ()=>{
-    render();
-}
-
-function cellState(x, y) {
-    if( x<0 || x > viewPortSize-1 || y<0 || y > viewPortSize-1 ){
-        return 0;
+    onload = ()=>{
+        render();
     }
-    return grid_data[y][x];
-}
 
-function changeState(x, y, newState){
-    grid_data[y][x] = newState;
-}
+    function cellState(x, y) {
+        if( x<0 || x > viewPortSize-1 || y<0 || y > viewPortSize-1 ){
+            return 0;
+        }
+        return grid_data[y][x];
+    }
 
-function emptyGridCells(gridSize = viewPortSize) {
-    let y = [];
-    let x = [];
+    function changeState(x, y, newState){
+        grid_data[y][x] = newState;
+    }
+
+    function emptyGridCells(gridSize = viewPortSize) {
+        let y = [];
+        let x = [];
 
     //Fill
     for(let i = 0; i < gridSize; i++){
@@ -278,3 +311,7 @@ iFPS.onchange = ()=>{
 iCellSize.onchange = ()=>{
     cellSize = Number(iCellSize.value);
 }
+
+</script>
+</body>
+</html>

@@ -6,21 +6,30 @@
     Author  : Elias Faisal
               github.com/eliasfaisal
 
-    License : CC0-1.0 license
+    License : MIT Licence
 -->
 <html>
     <head>
-        <title>Conway's Game of Life</title>
+        <title>Celullar Automotun</title>
         <meta charset="utf-8">
         <meta property="og:title" content="Conway's Game of Life Simulation with JS">
         <meta property="og:description" content="By Elias Faisal">
+        <style type="text/css">
+            *{
+                user-select: none;
+                font-family: arial;
+            }
+        </style>
     </head>
     <body>
         <canvas width="500" height="500" style="border: 1px solid #000;"></canvas>
         <br/>
-        <button id="runbtn">Run</button>
-        <button onclick="generateRandomData()">Generate Random Cells</button>
-        <input value="500" placeholder="Amount" type="number" id="amount"/>
+        <button id="runbtn">Run</button> <button id="randbtn">Randomize</button> <button id="drbtn">Draw</button> <button id="clrbtn">Clear</button> <button id="stepbtn">Step ></button> 
+        <input value="false" type="checkbox" id="iRenderGrids"/><label for="iRenderGrids">Grid Lines (low FPS)</label><br/>
+        <label for="amount">Random cells amount: </label><input value="1000" type="number" id="rndCellsAmount"/> <br/>
+        <label for="amount">View Port Size: </label><input value="100" type="number" id="iVPS"/> <br/>
+        <label for="amount">FPS: </label><input value="30" type="number" id="iFPS"/> <br/>
+        <label for="amount">Cell Size: </label><input value="5" type="number" id="iCellSize"/> <br/>
         <script src="script.js"></script>
     </body>
 </html>
